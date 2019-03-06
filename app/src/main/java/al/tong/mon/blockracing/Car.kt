@@ -26,7 +26,7 @@ class Car {
         this.x = x
         this.y = y
         this.width = this.blockSize * 3 + RacingView.SPACING * 2
-        this.width = this.blockSize * 4 + RacingView.SPACING * 3
+        this.height = this.blockSize * 4 + RacingView.SPACING * 3
 
         paint = Paint()
         paint.isAntiAlias = true
