@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:ads="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/blueGray50"
+              android:orientation="vertical">
+
+    <LinearLayout
+            android:background="#231815"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SCORE"
+                    android:textColor="@color/blueGray300"
+                    android:textSize="13dp"/>
+
+            <TextView
+                    android:id="@+id/tvScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="0"
+                    android:textColor="@color/blueGray600"
+                    android:textSize="22dp"
+                    android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LEVEL"
+                    android:textColor="@color/blueGray300"
+                    android:textSize="13dp"/>
+
+            <TextView
+                    android:id="@+id/tvLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="1"
+                    android:textColor="@color/blueGray600"
+                    android:textSize="22dp"
+                    android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BEST"
+                    android:textColor="@color/blueGray300"
+                    android:textSize="13dp"/>
+
+            <TextView
+                    android:id="@+id/tvBest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="0"
+                    android:textColor="@color/blueGray600"
+                    android:textSize="22dp"
+                    android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@color/blueGray900"/>
+
+        <al.tong.mon.blockracing.RacingView
+                android:id="@+id/racingView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:layout_centerInParent="true"/>
+
+        <LinearLayout
+                android:id="@+id/contNotify"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="60dp"
+                android:background="#231815"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/tvNotify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:textColor="@color/blueGray50"
+                    android:textSize="24dp"/>
+
+            <ImageView
+                    android:id="@+id/imgCenter"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="32dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_play"/>
+        </LinearLayout>
+
+        <include
+                android:id="@+id/toast"
+                android:visibility="gone"
+                layout="@layout/view_arrow_cont"/>
+    </RelativeLayout>
+</LinearLayout>

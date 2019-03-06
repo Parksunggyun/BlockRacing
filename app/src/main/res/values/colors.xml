@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="blueGray50">#ECEFF1</color>
+    <color name="blueGray100">#CFD8DC</color>
+    <color name="blueGray200">#B0BEC5</color>
+    <color name="blueGray300">#90A4AE</color>
+    <color name="blueGray400">#78908C</color>
+    <color name="blueGray500">#607D8B</color>
+    <color name="blueGray600">#546E7A</color>
+    <color name="blueGray700">#455A64</color>
+    <color name="blueGray800">#37474F</color>
+    <color name="blueGray900">#263238</color>
+</resources>
