@@ -1,6 +1,7 @@
 package al.tong.mon.blockracing
 
 import android.graphics.*
+import android.util.Log
 
 class Car {
 
@@ -47,6 +48,7 @@ class Car {
 
     fun moveDown(speed: Int) {
         this.y += speed
+        Log.e("moveDown()", "y position = $y, current speed = $speed")
     }
 
     fun moveLeft() {

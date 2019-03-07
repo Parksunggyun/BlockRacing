@@ -14,10 +14,13 @@ import kotlin.collections.ArrayList
 
 class RacingView : View {
 
+    //게임판 사이즈 변경 시 MAX_COL_CNT, VERTICAL_CNT 비율로 변경해줘야함.
+    // 첨에 MAX_COL_CNT = 3, VERTICAL_CNT = 20, HORIZONTAL_CNT = 13 이었음.
+
     companion object {
         const val SPACING = 2
-        private const val MAX_COL_CNT = 3
-        const val VERTICAL_CNT = 20
+        private const val MAX_COL_CNT = 5 // 차가 이동 가능한 칸 수
+        const val VERTICAL_CNT = 29 // 블록의 사이즈를 관장
         const val HORIZONTAL_CNT = MAX_COL_CNT * 3 + 2 + 2
 
         const val MSG_SCORE = 1000
@@ -149,19 +152,19 @@ class RacingView : View {
     fun createWall() {
         walls = ArrayList()
         for (i in 0 until RacingView.VERTICAL_CNT) {
-            if (i != 0 && i != RacingView.VERTICAL_CNT && i % 4 == 0) {
+/*            if (i != 0 && i != RacingView.VERTICAL_CNT && i % 4 == 0) {
                 continue
-            }
+            }*/
             Log.e("create Wall $i", "ggg")
 
-            val left = RectF(0f, 0f, 0f, 0f)
+            val left = RectF()
             left.top = (i * blockSize + SPACING * (i + 1)).toFloat()
             left.bottom = left.top + blockSize
             left.left = boardLeft.toFloat()
             left.right = left.left + blockSize
             walls!!.add(left)
 
-            val right = RectF(0f, 0f, 0f, 0f)
+            val right = RectF()
             right.top = (i * blockSize + SPACING * (i + 1)).toFloat()
             right.bottom = right.top + blockSize
             right.left = (boardRight - blockSize).toFloat()
@@ -188,6 +191,7 @@ class RacingView : View {
         }
 
         val carHeight = blockSize * 4 + SPACING * 3
+        // 차의 시작 위치를 계속 위로 쌓음.
         var startOffset = -carHeight
         var cnt = speed * (MAX_COL_CNT)
 
@@ -203,18 +207,29 @@ class RacingView : View {
         Log.e("cnt", "$cnt")
 
         for (i in 0 until cnt) {
-            val r = random.nextInt(MAX_COL_CNT)
+            // 1 ~ 4 사이, 가로가 5칸이므로 차가 최소 한 칸은 없어야 지니갈 수 있음.
+            val r = random.nextInt(MAX_COL_CNT -1) + 1
+            val posArray = ArrayList<Int>()
+            posArray.add(0)
+            posArray.add(1)
+            posArray.add(2)
+            posArray.add(3)
+            posArray.add(4)
+            Collections.shuffle(posArray)
+            for (c in 0 until r) {
+                val pos = posArray[c]
+                val obstacle = Car(blockSize, getLeftPositionX(pos), startOffset, Car.COLOR_OBSTACLE_CAR)
+                obstacles!!.add(obstacle)
+            }
 
-            val obstacle = Car(blockSize, getLeftPositionX(r), startOffset, Car.COLOR_OBSTACLE_CAR)
-            obstacles!!.add(obstacle)
-
-            if (i % 4 == 0 && MAX_COL_CNT > 2) {
+/*            if (i % 4 == 0) {
                 val r1 = random.nextInt(MAX_COL_CNT)
                 if (r != r1) {
                     val obstacle1 = Car(blockSize, getLeftPositionX(r1), startOffset, Car.COLOR_OBSTACLE_CAR)
                     obstacles!!.add(obstacle1)
                 }
-            }
+            }*/
+            // 적 차 사이의 거리
             startOffset = (startOffset - ((carHeight + SPACING) * 2))
         }
         obstacles!![obstacles!!.size - 1].last = true
